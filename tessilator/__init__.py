@@ -1,5 +1,9 @@
-from pkg_resources import get_distribution, DistributionNotFound
+"""Package metadata for tessilator."""
+
+import importlib.metadata
+
 try:
-    __version__ = get_distribution(__name__).version
-except DistributionNotFound:
-    pass  # package is not installed
+    __version__ = importlib.metadata.version('tessilator')
+except importlib.metadata.PackageNotFoundError:
+    # Source-tree import without installed package metadata.
+    pass
